@@ -8,6 +8,7 @@ public class TubeScrolling : MonoBehaviour
     public float gap;
     public Transform upperTube;
     public Transform lowerTube;
+    public bool IsRunning = true;
 
     private Vector3 mScreenBounds;
     private Vector2 mTubeSize;
@@ -25,11 +26,14 @@ public class TubeScrolling : MonoBehaviour
 
     private void Update()
     {
-        transform.position -= scrollSpeed * Time.deltaTime * Vector3.right;
-
-        if (transform.position.x < -3f)
+        if (IsRunning)
         {
-            Repositioning();
+            transform.position -= scrollSpeed * Time.deltaTime * Vector3.right;
+
+            if (transform.position.x < -3f)
+            {
+                Repositioning();
+            }
         }
     }
 
